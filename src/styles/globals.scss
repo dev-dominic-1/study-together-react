@@ -22,6 +22,10 @@ body {
   }
 }
 
+button {
+  text-transform: capitalize !important;
+}
+
 // Flex class
 .d-flex {
   display: flex;

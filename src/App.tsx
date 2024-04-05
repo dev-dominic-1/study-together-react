@@ -14,7 +14,7 @@ function App() {
         <BrowserRouter>
           <div id="app-left-col">
             {routes.map(r => (
-              <NavigationItem route={r} />
+              <NavigationItem key={r.route.path} route={r} />
             ))}
           </div>
           <div id="app-right-col">

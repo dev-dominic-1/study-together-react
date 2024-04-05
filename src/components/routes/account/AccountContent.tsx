@@ -1,7 +1,7 @@
 import React from "react";
 import {Typography} from "@mui/material";
 
-export default function Account() {
+export default function AccountContent() {
   return (
     <>
       <Typography variant={"h3"}>

@@ -1,5 +1,4 @@
 import {createBrowserRouter, RouteObject, redirect, useNavigate} from "react-router-dom";
-import Account from "../components/account/Account";
 import {
   AccountCircleOutlined,
   AddBoxOutlined,
@@ -7,7 +6,8 @@ import {
   SearchOutlined,
   SvgIconComponent
 } from "@mui/icons-material";
-import Home from "../components/home/Home";
+import HomeRouteElement from "../components/routes/home/HomeRouteElement";
+import AccountContent from "../components/routes/account/AccountContent";
 
 interface AppRouteData {
   title: string,
@@ -24,7 +24,7 @@ export const routes: AppRoute[] = [
   {
     route: {
       path: '/',
-      element: Home(),
+      element: HomeRouteElement(),
     },
     data: {
       title: 'Home',
@@ -64,7 +64,7 @@ export const routes: AppRoute[] = [
   {
     route: {
       path: '/account',
-      element: Account()
+      element: AccountContent()
     },
     data: {
       title: 'Account',
