@@ -1,24 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import {ThemeProvider, Typography} from "@mui/material";
+import AppTheme from "./styles/AppTheme";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {routes} from "./core/Routes";
+import NavigationItem from "./components/navigation/NavigationItem";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="main" className="App">
+      <ThemeProvider theme={AppTheme}>
+        <BrowserRouter>
+          <div id="app-left-col">
+            {routes.map(r => (
+              <NavigationItem route={r} />
+            ))}
+          </div>
+          <div id="app-right-col">
+            <Routes>
+              {routes.map(({route: r}) => (
+                <Route key={r.path} path={r.path} element={r.element} />
+              ))}
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </ThemeProvider>
     </div>
   );
 }

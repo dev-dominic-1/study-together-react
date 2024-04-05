@@ -1,0 +1,245 @@
+@use "sass:map" as map;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./background";
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: $app-background-color;
+}
+
+// Background fill controls with optional opacity
+.background-fill {
+  background-color: $app-background-color !important;
+}
+@for $i from 1 through 4 {
+  $opacity: #{$i * 25};
+  .background-fill-#{$opacity} {
+    background-color: rgba($app-background-color, calc($opacity / 100)) !important;
+  }
+}
+
+// Flex class
+.d-flex {
+  display: flex;
+}
+
+// Justification controls
+$justifications: start, center, end, space-around, space-between;
+$justification-targets: self, content, items;
+@each $justification in $justifications {
+  @each $target in $justification-targets {
+    .justify-#{$target}-#{$justification} {
+      justify-#{$target}: $justification;
+    }
+  }
+}
+
+// TODO Adjust for react component
+button {
+  &.large {
+    min-height: 48px;
+  }
+  &.x-large {
+    min-height: 64px;
+  }
+}
+
+// TODO Adjust this for React material select component
+mat-select {
+  &.mat-select-no-drop-arrow .mat-mdc-select-arrow {
+    display: none;
+  }
+  &:has(.mat-select-custom-arrow) {
+    position: relative;
+    & .mat-select-custom-arrow {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      transition: all 0.15s ease-in-out;
+    }
+    &:focus .mat-select-custom-arrow {
+      transform: translateY(-50%) rotate(-180deg);
+      &:not(.reverse-rotation) {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+}
+
+.route-page-wrapper {
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.primary-content-page-wrapper {
+  padding: 12px 24px;
+}
+
+.disabled {
+  position: relative;
+  pointer-events: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  cursor: default !important;
+  & > * {
+    opacity: 0.54;
+  }
+}
+
+.hover-darken:not(.disabled) {
+  position: relative;
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+}
+
+// TODO Adjust this for React icon library
+mat-icon {
+  &.large {
+    $size: 32px;
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+  &.x-large {
+    $size: 48px;
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+  &.small {
+    $size: 18px;
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+  &.x-small {
+    $size: 12px;
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+  @for $i from 1 through 24 {
+    &.size-#{$i} {
+      $size: #{$i * 4px};
+      font-size: $size;
+      height: $size;
+      width: $size;
+    }
+  }
+}
+
+// 10-point font weight controls
+@for $i from 1 through 10 {
+  $weight: #{$i * 100};
+  .font-weight-#{$weight} {
+    font-weight: $weight !important;
+  }
+}
+
+// Margin/Padding controls
+@for $i from 0 through 24 {
+  $px: #{$i * 4px};
+  .pa-#{$i} {
+    padding: $px !important;
+  }
+  .px-#{$i} {
+    padding-left: $px !important;
+    padding-right: $px !important;
+  }
+  .py-#{$i} {
+    padding-top: $px !important;
+    padding-bottom: $px !important;
+  }
+  .pt-#{$i} {
+    padding-top: $px !important;
+  }
+  .pr-#{$i} {
+    padding-right: $px !important;
+  }
+  .pb-#{$i} {
+    padding-bottom: $px !important;
+  }
+  .pl-#{$i} {
+    padding-left: $px !important;
+  }
+  .ma-#{$i} {
+    margin: $px !important;
+  }
+  .mx-#{$i} {
+    margin-left: $px !important;
+    margin-right: $px !important;
+  }
+  .my-#{$i} {
+    margin-top: $px !important;
+    margin-bottom: $px !important;
+  }
+  .mt-#{$i} {
+    margin-top: $px !important;
+  }
+  .mr-#{$i} {
+    margin-right: $px !important;
+  }
+  .mb-#{$i} {
+    margin-bottom: $px !important;
+  }
+  .ml-#{$i} {
+    margin-left: $px !important;
+  }
+}
+
+// Border-radius/rounding controls
+@for $i from 0 through 6 {
+  $px: #{$i * 5px};
+  .rounded-#{$i} {
+    border-radius: $px !important;
+  }
+}
+
+// Percentage-based width control
+@for $i from 0 through 10 {
+  $width: #{$i * 10%};
+  .width-#{$i * 10} {
+    width: $width;
+  }
+}
+
+// Passing breakpoints up to template through computed CSS properties
+$current-breakpoint-var: --current-breakpoint;
+body {
+  #{$current-breakpoint-var}: desktop;
+}
+@media (width <= $compact-desktop) {
+  body {
+    #{$current-breakpoint-var}: compact-desktop;
+  }
+}
+@media (width <= $tablet-breakpoint) {
+  body {
+    #{$current-breakpoint-var}: tablet;
+  }
+}
+@media (width <= $mobile-breakpoint) {
+  body {
+    #{$current-breakpoint-var}: mobile;
+  }
+}
+@media (width <= $mobile-xs-breakpoint) {
+  body {
+    #{$current-breakpoint-var}: mobile-xs;
+  }
+}

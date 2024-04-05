@@ -1,0 +1,34 @@
+$nav-item-height: 75px;
+$icon-size: 32px;
+@mixin nav-item-font() {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Montserrat', serif;
+}
+
+.wrapper {
+  width: 100%;
+  &>* {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 24px;
+    height: $nav-item-height;
+    align-items: center;
+    @include nav-item-font();
+    &>* {
+      &:first-child {
+        display: flex;
+        justify-content: end;
+      }
+      &:last-child {
+        display: flex;
+        justify-content: start;
+      }
+      &>svg {
+        height: $icon-size;
+        width: $icon-size;
+      }
+    }
+  }
+}
