@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.scss';
-import {ThemeProvider, Typography} from "@mui/material";
+import {ThemeProvider} from "@mui/material";
 import AppTheme from "./styles/AppTheme";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {routes} from "./core/Routes";
