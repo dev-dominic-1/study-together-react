@@ -1,4 +1,12 @@
 #home-content__tabs {
   max-width: 800px;
   margin: auto;
+  & button {
+    font-size: 28px;
+  }
+}
+
+.divider {
+  width: 100%;
+  border-bottom: 1px solid #EBEBEB;
 }

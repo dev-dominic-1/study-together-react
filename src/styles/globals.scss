@@ -5,6 +5,13 @@
 @import "./background";
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+.MuiTabs-root button {
+  font-weight: 400;
+  &.Mui-selected {
+    font-weight: 600 !important;
+  }
+}
+
 body {
   margin: 0;
   overflow: hidden;

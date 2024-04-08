@@ -2,7 +2,7 @@ import React from "react";
 import { Post } from "../../../../models/Post";
 import PostCard from "../../../post-card/PostCard";
 import styles from "./FriendsTabContent.module.scss";
-import { InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
 
 let testPost: Post = new Post(
   "Albert Einstein",
@@ -16,11 +16,11 @@ export default function FriendsTabContent() {
   interface ContentTypeOption {
     value: string;
     text: string;
-    selected?: boolean;
+    disabled?: boolean;
   }
   const contentTypeOptions: ContentTypeOption[] = [
-    { value: "RELEVANT", text: "Relevant" },
-    { value: "RECENT", text: "Recent" },
+    { value: "RELEVANT", text: "Most Relevant", disabled: true },
+    { value: "RECENT", text: "Most Recent" },
   ];
 
   const [contentOption, setContentOption] = React.useState(
@@ -33,7 +33,7 @@ export default function FriendsTabContent() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.contentOptionSelector}>
+      <div className={`${styles.contentOptionSelector} pt-4`}>
         <Select
           sx={{ ".MuiOutlinedInput-notchedOutline": { border: "none" } }}
           value={contentOption}
@@ -44,6 +44,7 @@ export default function FriendsTabContent() {
             <MenuItem
               key={`menu-option-${i}`}
               value={option.value}
+              disabled={!!option.disabled}
             >
               {option.text}
             </MenuItem>

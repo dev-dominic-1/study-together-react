@@ -2,7 +2,7 @@ import React, { createElement } from "react";
 import { Tab, Tabs } from "@mui/material";
 import RelevantTabContent from "./relevant/RelevantTabContent";
 import FriendsTabContent from "./friends/FriendsTabContent";
-import styles from "./HomeContent.module.scss"
+import styles from "./HomeContent.module.scss";
 
 function HomeContent() {
   interface Tab {
@@ -16,7 +16,7 @@ function HomeContent() {
     {
       id: "home__relevant-tab",
       label: "Relevant",
-      disabled: false,
+      disabled: true,
       component: RelevantTabContent,
     },
     {
@@ -34,8 +34,9 @@ function HomeContent() {
 
   return (
     <div className={`${styles.wrapper} app__background-config-1`}>
+      <div className="py-6"></div>
       <Tabs
-        id={styles['home-content__tabs']}
+        id={styles["home-content__tabs"]}
         value={tab}
         onChange={handleSetTab}
       >
@@ -49,6 +50,7 @@ function HomeContent() {
           />
         ))}
       </Tabs>
+      <div className={styles.divider}></div>
       {tabs.map((t, i) => (
         <div
           role="tabpanel"
@@ -59,6 +61,7 @@ function HomeContent() {
           {createElement(t.component)}
         </div>
       ))}
+      <div className="py-10"></div>
     </div>
   );
 }
