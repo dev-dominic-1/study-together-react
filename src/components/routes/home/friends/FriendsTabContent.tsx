@@ -1,5 +1,4 @@
 import React from "react";
-import {Typography} from "@mui/material";
 import { Post } from "../../../../models/Post";
 import PostCard from "../../../post-card/PostCard";
 
@@ -11,9 +10,6 @@ export default function FriendsTabContent() {
 
   return (
     <>
-      <Typography variant={"h3"}>
-        FRIENDS TAB CONTENT COMPONENT
-      </Typography>
       {posts.map((p, i) => (
         <PostCard key={`post-card-${i}`} post={p} />
       ))}

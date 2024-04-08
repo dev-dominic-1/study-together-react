@@ -1,11 +1,22 @@
+@import "./styles/background";
+
 #main {
   height: 100dvh;
   width: 100dvw;
   display: grid;
   grid-template-columns: 350px auto;
-  grid-column-gap: 12px;
 }
 
 #app-left-col {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#app-right-col {
+  overflow-y: scroll;
+  &:has(.app__background-config-1) {
+    @include background-config-1();
+  }
+  &:has(.app__background-config-2) {
+    @include background-config-2();
+  }
 }

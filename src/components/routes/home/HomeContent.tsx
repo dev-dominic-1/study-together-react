@@ -32,7 +32,7 @@ function HomeContent() {
   }
 
   return (
-    <>
+    <div className="app__background-config-1">
       <Tabs
         value={tab}
         onChange={handleSetTab}
@@ -57,7 +57,7 @@ function HomeContent() {
           {createElement(t.component)}
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

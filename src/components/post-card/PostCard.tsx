@@ -35,12 +35,17 @@ function PostCard(props: PostCardProps) {
           </div>
         </div>
         <CardContent className={styles.postCardContent}>
-          <Paper className={styles.contentPaper}>
-            CONTENT
-          </Paper>
-          <Paper className={styles.contentPaper}>
-            CONTENT
-          </Paper>
+          <Typography variant={"body1"} className="mb-4">
+            {content}
+          </Typography>
+          <div>
+            <Paper className={styles.contentPaper}>
+              CONTENT
+            </Paper>
+            <Paper className={styles.contentPaper}>
+              CONTENT
+            </Paper>
+          </div>
         </CardContent>
         <CardActions className={`${styles.postCardActions} background-fill`}>
           {createElement(FavoriteIcon)}

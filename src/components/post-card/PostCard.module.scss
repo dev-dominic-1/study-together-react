@@ -1,8 +1,10 @@
 .wrapper {
+  max-width: 800px;
   border-radius: 10px !important;
   box-shadow: 0 5px 17px rgba(0, 0, 0, 0.15), 0 0 17px rgba(0, 0, 0, 0.1) !important;
   &>.header {
     padding: 12px; // pa-3
+    padding-bottom: 0; // override
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,9 +30,11 @@
     padding-bottom: 0;
     padding-left: $x-padding;
     padding-right: $x-padding;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: $x-padding;
+    &>div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: $x-padding;
+    }
     & .contentPaper {
       $rounding: 10px;
       border-radius: $rounding $rounding 0 0 !important;
