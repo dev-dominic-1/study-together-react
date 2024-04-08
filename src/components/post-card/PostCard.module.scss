@@ -1,0 +1,60 @@
+.wrapper {
+  border-radius: 10px !important;
+  box-shadow: 0 5px 17px rgba(0, 0, 0, 0.15), 0 0 17px rgba(0, 0, 0, 0.1) !important;
+  &>.header {
+    padding: 12px; // pa-3
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &>div {
+      display: flex;
+      gap: 8px;
+    }
+    & .usernameTimestamp {
+      transform: translateY(2px); // Adjust for line-size
+      &>* {
+        font-size: 14px !important;
+      }
+      display: flex;
+      flex-direction: column;
+      & .timestamp {
+        font-weight: 500;
+        opacity: 0.6;
+      }
+    }
+  }
+  &>.postCardContent {
+    $x-padding: 32px;
+    padding-bottom: 0;
+    padding-left: $x-padding;
+    padding-right: $x-padding;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: $x-padding;
+    & .contentPaper {
+      $rounding: 10px;
+      border-radius: $rounding $rounding 0 0 !important;
+      box-shadow: 0 7px 22px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.13);
+      min-height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &>.postCardActions {
+    color: grey;
+    position: relative;
+    padding: 8px 32px;
+    display: flex;
+    justify-content: space-between;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 95%;
+      border: 1px solid lightgrey;
+    }
+  }
+}

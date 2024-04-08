@@ -1,12 +1,55 @@
-import React from "react";
-import {Card} from "@mui/material";
+import React, {createElement} from "react";
+import {Avatar, Button, Card, CardActions, CardContent, Paper, Typography} from "@mui/material";
+import {Post} from "../../models/Post";
+import styles from "./PostCard.module.scss";
+import {
+  Favorite as FavoriteIcon,
+  IosShare as IosShareIcon,
+} from "@mui/icons-material";
 
-function PostCard() {
-  <>
-    <Card>
-      CARD CONTENT
-    </Card>
-  </>
+interface PostCardProps {
+  post: Post
+}
+
+function PostCard(props: PostCardProps) {
+
+  const {username, timestamp, content} = props.post
+
+  return (
+    <>
+      <Card className={`${styles.wrapper} background-fill mt-6 mx-4`} elevation={0}>
+        <div className={styles.header}>
+          <div>
+            <Avatar>{username[0] ?? '?'}</Avatar>
+            <div className={styles.usernameTimestamp}>
+              <Typography variant={"body2"} className="font-weight-600">
+                {username}
+              </Typography>
+              <Typography variant={"body2"} className={styles.timestamp}>
+                {timestamp}
+              </Typography>
+            </div>
+          </div>
+          <div>
+            POST STAT
+          </div>
+        </div>
+        <CardContent className={styles.postCardContent}>
+          <Paper className={styles.contentPaper}>
+            CONTENT
+          </Paper>
+          <Paper className={styles.contentPaper}>
+            CONTENT
+          </Paper>
+        </CardContent>
+        <CardActions className={`${styles.postCardActions} background-fill`}>
+          {createElement(FavoriteIcon)}
+          <Button variant={"text"}>Comment</Button>
+          {createElement(IosShareIcon)}
+        </CardActions>
+      </Card>
+    </>
+  )
 }
 
 export default PostCard;
