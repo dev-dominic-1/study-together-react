@@ -1,19 +1,24 @@
-import {PostStat} from "../components/post-card/post-stat-icon/PostStat"
+import { PostStatModel } from "../components/post-card/post-stat-icon/PostStatModel";
 
 export class Post {
-  username!: string
-  timestamp!: string
-  content!: string
-  images?: any[]
-  stat?: PostStat
-  liked?: boolean
+  username!: string;
+  timestamp!: string;
+  content!: string;
+  images?: any[];
+  stat?: PostStatModel;
+  liked?: boolean;
 
-  constructor(username: string, timestamp?: string, content?: string, images?: any[], stat?: PostStat) {
-    this.username = username
-    this.timestamp = timestamp ?? new Date()?.toLocaleString()
-    this.content = content ?? ''
-    this.images = images
-    this.stat = stat
+  constructor(
+    username: string,
+    timestamp?: string,
+    content?: string,
+    images?: any[],
+    stat?: PostStatModel,
+  ) {
+    this.username = username;
+    this.timestamp = timestamp ?? new Date()?.toLocaleString();
+    this.content = content ?? "";
+    this.images = images;
+    this.stat = stat;
   }
-
 }

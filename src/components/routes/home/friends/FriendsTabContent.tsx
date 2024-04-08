@@ -3,11 +3,14 @@ import { Post } from "../../../../models/Post";
 import PostCard from "../../../post-card/PostCard";
 import styles from "./FriendsTabContent.module.scss";
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { PostStatModel } from "../../../post-card/post-stat-icon/PostStatModel";
 
 let testPost: Post = new Post(
   "Albert Einstein",
   "16 Hours Ago",
   "Sample Content",
+  undefined,
+  PostStatModel.BOOKMARK,
 );
 
 export default function FriendsTabContent() {

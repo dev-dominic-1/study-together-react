@@ -1,0 +1,133 @@
+$collapsed-icon-size: 24px;
+$collapsed-icon-padding: 4px;
+$expanded-icon-size: 32px;
+$expanded-icon-padding: 8px;
+
+$expanded-content-width: 100px;
+
+.wrapper {
+  box-shadow: 2px 3px 13px rgba(0, 0, 0, 0.25);
+  cursor: pointer !important;
+  display: flex;
+  align-items: center;
+  background: #eac75e;
+  padding: $collapsed-icon-padding $expanded-icon-padding;
+  border-radius: 999px;
+  gap: 0 !important;
+  & .iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $collapsed-icon-size;
+    width: $collapsed-icon-size;
+  }
+  & svg {
+    padding: $expanded-icon-padding;
+    background: #f2df9c;
+    border-radius: 999px;
+  }
+  & .expandedContent {
+    display: none;
+    justify-content: center;
+    transform: translate($collapsed-icon-padding, 2px);
+    height: 100%;
+    width: $collapsed-icon-size;
+    overflow: hidden;
+    & p {
+      font-weight: 600;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+    }
+  }
+}
+
+.wrapper:is(.expanded,.collapsed) {
+  & .expandedContent {
+    display: flex;
+  }
+}
+
+@mixin apply-animation($top-bottom: top, $revert: 0) {
+  @if($revert != 0) {
+    animation-name: collapse-content-top;
+    @if($top-bottom != top) {
+      animation-name: collapse-content-bottom;
+    }
+  } @else {
+    animation-name: expand-content-top;
+    @if ($top-bottom != top) {
+      animation-name: expand-content-bottom;
+    }
+  }
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+.wrapper.expanded {
+  transition: all 0.2s;
+  & .iconContainer {
+    border-radius: 50px;
+    height: $collapsed-icon-size;
+    width: $collapsed-icon-size;
+    @include apply-animation(top);
+  }
+  & .expandedContent {
+    @include apply-animation(bottom);
+  }
+}
+
+.wrapper.collapsed {
+  & .iconContainer {
+    @include apply-animation(top, 1);
+  }
+  & .expandedContent {
+    width: 0;
+    @include apply-animation(bottom, 1);
+  }
+}
+
+@keyframes expand-content-top {
+  0% {
+    height: $collapsed-icon-size;
+    width: $collapsed-icon-size;
+  }
+  100% {
+    height: $expanded-icon-size;
+    width: $expanded-icon-size;
+  }
+}
+
+
+@keyframes expand-content-bottom {
+  0% {
+    width: 0;
+    padding: 0;
+  }
+  100% {
+    width: $expanded-content-width;
+    padding: $expanded-icon-padding;
+  }
+}
+
+@keyframes collapse-content-top {
+  0% {
+    height: $expanded-icon-size;
+    width: $expanded-icon-size;
+  }
+  100% {
+    height: $collapsed-icon-size;
+    width: $collapsed-icon-size;
+  }
+}
+
+@keyframes collapse-content-bottom {
+  0% {
+    width: $expanded-content-width;
+    padding: $expanded-icon-padding;
+  }
+  100% {
+    width: 0 !important;
+    padding: 0 !important;
+  }
+}
