@@ -2,6 +2,7 @@ import React, { createElement } from "react";
 import { Tab, Tabs } from "@mui/material";
 import RelevantTabContent from "./relevant/RelevantTabContent";
 import FriendsTabContent from "./friends/FriendsTabContent";
+import styles from "./HomeContent.module.scss"
 
 function HomeContent() {
   interface Tab {
@@ -32,8 +33,9 @@ function HomeContent() {
   }
 
   return (
-    <div className="app__background-config-1">
+    <div className={`${styles.wrapper} app__background-config-1`}>
       <Tabs
+        id={styles['home-content__tabs']}
         value={tab}
         onChange={handleSetTab}
       >

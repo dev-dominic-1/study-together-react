@@ -1,5 +1,11 @@
+@import "../../../../styles/background";
+
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.contentOptionSelector {
+  max-width: 800px;
 }

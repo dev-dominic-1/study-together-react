@@ -40,10 +40,14 @@ function PostCard(props: PostCardProps) {
           </Typography>
           <div>
             <Paper className={styles.contentPaper}>
-              CONTENT
+              <Typography variant={"body1"}>
+                CONTENT
+              </Typography>
             </Paper>
             <Paper className={styles.contentPaper}>
-              CONTENT
+              <Typography variant={"body1"}>
+                CONTENT
+              </Typography>
             </Paper>
           </div>
         </CardContent>

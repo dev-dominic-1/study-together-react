@@ -52,9 +52,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "prettier": "3.2.5",
     "sass": "^1.74.1",
     "sass-loader": "^14.1.1",
-    "webpack": "^5.91.0",
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11"
+    "webpack": "^5.91.0"
   }
 }

@@ -1,19 +1,61 @@
 import React from "react";
 import { Post } from "../../../../models/Post";
 import PostCard from "../../../post-card/PostCard";
-import styles from  "./FriendsTabContent.module.scss"
+import styles from "./FriendsTabContent.module.scss";
+import { InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 
-let testPost = new Post('Albert Einstein', '16 Hours Ago', 'Sample Content')
+let testPost: Post = new Post(
+  "Albert Einstein",
+  "16 Hours Ago",
+  "Sample Content",
+);
 
 export default function FriendsTabContent() {
+  const posts: Post[] = [testPost, testPost, testPost];
 
-  const posts: Post[] = [testPost, testPost, testPost]
+  interface ContentTypeOption {
+    value: string;
+    text: string;
+    selected?: boolean;
+  }
+  const contentTypeOptions: ContentTypeOption[] = [
+    { value: "RELEVANT", text: "Relevant" },
+    { value: "RECENT", text: "Recent" },
+  ];
+
+  const [contentOption, setContentOption] = React.useState(
+    contentTypeOptions[1].value,
+  );
+
+  const handleContentOptionChange = (e: SelectChangeEvent) => {
+    setContentOption(e.target.value as string);
+  };
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.contentOptionSelector}>
+        <Select
+          sx={{ ".MuiOutlinedInput-notchedOutline": { border: "none" } }}
+          value={contentOption}
+          variant={"outlined"}
+          onChange={handleContentOptionChange}
+        >
+          {contentTypeOptions.map((option, i) => (
+            <MenuItem
+              key={`menu-option-${i}`}
+              value={option.value}
+            >
+              {option.text}
+            </MenuItem>
+          ))}
+        </Select>
+      </div>
       {posts.map((p, i) => (
-        <PostCard key={`post-card-${i}`} post={p} />
+        <PostCard
+          key={`post-card-${i}`}
+          post={p}
+        />
       ))}
     </div>
-  )
+  );
 }
