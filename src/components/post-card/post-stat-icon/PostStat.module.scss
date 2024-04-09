@@ -34,6 +34,7 @@ $expanded-content-width: 100px;
     width: $collapsed-icon-size;
     overflow: hidden;
     & p {
+      white-space: nowrap;
       font-weight: 600;
       user-select: none;
       -moz-user-select: none;
