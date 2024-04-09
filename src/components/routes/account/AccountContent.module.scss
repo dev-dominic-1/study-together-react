@@ -1,0 +1,47 @@
+.wrapper {
+  .bannerContainer {
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    & img {
+      height: calc(100% + 32px);
+      transform: translate(-12px, -6px);
+    }
+  }
+  .bioContentContainer {
+    margin: auto;
+    width: 80%;
+    &>.profileImageWrapper {
+      $image-shift: 75px;
+      $border-width: 4px;
+      $border-radius: 11px;
+      transform: translateY(-$image-shift);
+      height: 250px;
+      width: 250px;
+      position: relative;
+      &::before {
+        position: absolute;
+        content: '';
+        z-index: -1;
+        height: calc($image-shift + $border-width);
+        width: calc(100% + $border-width * 2);
+        top: -$border-width;
+        left: -$border-width;
+        border-radius: $border-radius $border-radius 0 0;
+        background: #e8c65e;
+        box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.25) inset,
+          0 5px 5px rgba(0, 0, 0, 0.25) inset;
+      }
+      //overflow: hidden;
+      border-radius: $border-radius;
+      & img {
+        height: 100%;
+        width: 100%;
+        border-radius: $border-radius;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+}
