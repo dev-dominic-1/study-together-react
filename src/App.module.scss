@@ -1,0 +1,7 @@
+.universalDescriptorDialog [role=dialog] {
+  width: 50dvw !important;
+  height: 60dvh;
+  &>* {
+    height: 100% !important;
+  }
+}

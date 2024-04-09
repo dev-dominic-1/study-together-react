@@ -1,0 +1,30 @@
+$title-height: 52px;
+
+.wrapper {
+  & .title {
+    position: relative;
+    z-index: 2;
+    height: $title-height;
+    display: flex;
+    justify-content: end;
+    padding: 0 8px;
+    & button {
+      height: 40px;
+      width: 40px;
+      align-self: center;
+    }
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+  }
+  width: 100%;
+  & .iframeContainer {
+    height: calc(100% - $title-height);
+    position: relative;
+    &>#iframeLoader {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+}

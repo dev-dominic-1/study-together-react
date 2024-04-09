@@ -55,7 +55,8 @@ function HomeContent() {
         <div
           role="tabpanel"
           hidden={i !== tab}
-          id="sample-tabpanel"
+          key={`tabpanel-${i}`}
+          id={`tabpanel-${i}`}
           aria-labelledby={t.id}
         >
           {createElement(t.component)}
