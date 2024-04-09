@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.scss";
-import { Card, Dialog, ThemeProvider } from "@mui/material";
+import { Dialog, ThemeProvider } from "@mui/material";
 import AppTheme from "./styles/AppTheme";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { routes } from "./core/Routes";

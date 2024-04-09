@@ -2,7 +2,6 @@ import React, { createElement, useEffect } from "react";
 import { Card, IconButton, LinearProgress } from "@mui/material";
 import styles from "./UniversalDescriptor.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
-import EventEmitter from "events";
 
 interface UniversalDescriptorProps {
   onClickClose?: Function;
@@ -27,8 +26,6 @@ export default function UniversalDescriptor(props: UniversalDescriptorProps) {
     iframe.style.height = "100%";
     el?.appendChild(iframe);
   }, []);
-
-  const emitter = new EventEmitter();
 
   return (
     <>
